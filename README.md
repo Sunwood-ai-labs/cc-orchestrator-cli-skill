@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/cc-orchestrator-cli-skill.svg" alt="CC Orchestrator CLI Skill icon" width="120" height="120">
   <h1>CC Orchestrator CLI Skill</h1>
-  <p>Run Claude Code agent teams from the CLI with reproducible prompts, debug logs, and teammate-by-teammate reporting.</p>
+  <p>Run Claude Code agent teams from Windows PowerShell with reproducible prompts, debug logs, and teammate-by-teammate reporting.</p>
 
   <p>
     <img src="https://img.shields.io/badge/skill-Claude%20Code%20CLI-BD3C2B?style=flat-square" alt="Claude Code CLI badge">
@@ -16,7 +16,7 @@
 
 ## ✨ What It Does
 
-This repository packages a root-level Codex skill for operating Claude Code in true agent-team mode from the CLI.
+This repository packages a root-level Codex skill for operating Claude Code in true agent-team mode from Windows PowerShell.
 
 It is designed for the workflow we validated in this repo:
 
@@ -32,6 +32,12 @@ It is designed for the workflow we validated in this repo:
 1. Make sure `claude` is available in your shell.
 2. Read [SKILL.md](./SKILL.md) for the working rules.
 3. Use the helper script with a prompt file or inline prompt text.
+
+Windows-only assumption:
+
+- the helper scripts in this repo target Windows PowerShell
+- the documented command examples assume a Windows shell environment
+- no macOS or Linux helper flow is maintained in this repository right now
 
 ```powershell
 .\scripts\run-claude-team.ps1 -PromptText @'
@@ -101,6 +107,7 @@ What we explicitly checked:
 ## ⚠️ Notes
 
 - This repository assumes Claude Code is already installed and authenticated in your local environment.
+- This repository is intentionally Windows-first and currently documents only Windows PowerShell usage.
 - `--dangerously-skip-permissions` is intentionally optional and should only be used when hands-off execution is desired.
 - This repository focuses on the CLI skill workflow itself, not on publishing a docs site.
 

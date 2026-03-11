@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/cc-orchestrator-cli-skill.svg" alt="CC Orchestrator CLI Skill icon" width="120" height="120">
   <h1>CC Orchestrator CLI Skill</h1>
-  <p>Claude Code の agent team を CLI から安定して実行し、debug log と teammate 単位の報告まで揃えるためのスキルです。</p>
+  <p>Claude Code の agent team を Windows PowerShell から安定して実行し、debug log と teammate 単位の報告まで揃えるためのスキルです。</p>
 
   <p>
     <img src="https://img.shields.io/badge/skill-Claude%20Code%20CLI-BD3C2B?style=flat-square" alt="Claude Code CLI badge">
@@ -16,7 +16,7 @@
 
 ## ✨ できること
 
-このリポジトリは、Claude Code を CLI から「本物の agent team モード」で動かすためのルートスキルをまとめたものです。
+このリポジトリは、Claude Code を Windows PowerShell から「本物の agent team モード」で動かすためのルートスキルをまとめたものです。
 
 前提にしている運用は次のとおりです。
 
@@ -32,6 +32,12 @@
 1. シェルから `claude` が使える状態にします。
 2. [SKILL.md](./SKILL.md) の運用ルールを確認します。
 3. PowerShell helper で prompt を渡して実行します。
+
+Windows 前提:
+
+- helper script は Windows PowerShell 向けです
+- この repo のコマンド例は Windows シェルを前提にしています
+- macOS / Linux 向けの helper フローは現時点では含めていません
 
 ```powershell
 .\scripts\run-claude-team.ps1 -PromptText @'
@@ -101,6 +107,7 @@ GitHub Actions でも同じ検証を [validate.yml](./.github/workflows/validate
 ## ⚠️ 注意点
 
 - Claude Code のインストールと認証はローカル環境で済んでいる前提です。
+- このリポジトリは Windows 前提で、利用手順も Windows PowerShell に寄せています。
 - `--dangerously-skip-permissions` は必要なときだけ付ける運用を想定しています。
 - このリポジトリは docs サイト公開よりも CLI スキル運用の再利用に主眼を置いています。
 

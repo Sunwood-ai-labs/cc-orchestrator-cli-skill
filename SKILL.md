@@ -1,11 +1,11 @@
 ---
 name: cc-orchestrator-cli-skill
-description: Operate Claude Code from the CLI in experimental agent-team mode. Use when Codex needs to instruct Claude Code to spawn its own teammates from PowerShell or another shell, run a structured build or review task, capture debug logs, distinguish true agent teams from --agents subagents, and report what each teammate did.
+description: Operate Claude Code from the CLI in experimental agent-team mode on Windows. Use when Codex needs to instruct Claude Code to spawn its own teammates from PowerShell, run a structured build or review task, capture debug logs, distinguish true agent teams from --agents subagents, and report what each teammate did.
 ---
 
 # CC Orchestrator CLI Skill
 
-Use this skill to drive Claude Code from the command line when the goal is true agent-team execution, not session-scoped `--agents` subagents.
+Use this skill to drive Claude Code from the command line on Windows when the goal is true agent-team execution, not session-scoped `--agents` subagents.
 
 ## Follow this workflow
 
