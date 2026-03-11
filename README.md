@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/cc-orchestrator-cli-skill.svg" alt="CC Orchestrator CLI Skill icon" width="120" height="120">
+  <img src="./assets/cc-orchestrator-cli-skill-header.webp" alt="CC Orchestrator CLI Skill header image" width="880">
   <h1>CC Orchestrator CLI Skill</h1>
   <p>Run Claude Code agent teams from Windows PowerShell with reproducible prompts, debug logs, and teammate-by-teammate reporting.</p>
 
@@ -67,6 +67,7 @@ Prompting tip:
 |-- agents/
 |   `-- openai.yaml
 |-- assets/
+|   |-- cc-orchestrator-cli-skill-header.webp
 |   `-- cc-orchestrator-cli-skill.svg
 |-- references/
 |   `-- prompt-patterns.md

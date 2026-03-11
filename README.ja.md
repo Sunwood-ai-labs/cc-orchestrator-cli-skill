@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/cc-orchestrator-cli-skill.svg" alt="CC Orchestrator CLI Skill icon" width="120" height="120">
+  <img src="./assets/cc-orchestrator-cli-skill-header.webp" alt="CC Orchestrator CLI Skill header image" width="880">
   <h1>CC Orchestrator CLI Skill</h1>
   <p>Claude Code の agent team を Windows PowerShell から安定して実行し、debug log と teammate 単位の報告まで揃えるためのスキルです。</p>
 
@@ -67,6 +67,7 @@ Create an agent team in this workspace and build a small static browser app.
 |-- agents/
 |   `-- openai.yaml
 |-- assets/
+|   |-- cc-orchestrator-cli-skill-header.webp
 |   `-- cc-orchestrator-cli-skill.svg
 |-- references/
 |   `-- prompt-patterns.md
