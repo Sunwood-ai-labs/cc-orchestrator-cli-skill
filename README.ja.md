@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/cc-orchestrator-cli-skill-header.webp" alt="CC Orchestrator CLI Skill header image" width="880">
+  <img src="./assets/cc-orchestrator-cli-skill-header.webp" alt="CC Orchestrator CLI Skill header image" width="500">
   <h1>CC Orchestrator CLI Skill</h1>
   <p>Claude Code の agent team を Windows PowerShell から安定して実行し、debug log と teammate 単位の報告まで揃えるためのスキルです。</p>
 

@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/cc-orchestrator-cli-skill-header.webp" alt="CC Orchestrator CLI Skill header image" width="880">
+  <img src="./assets/cc-orchestrator-cli-skill-header.webp" alt="CC Orchestrator CLI Skill header image" width="500">
   <h1>CC Orchestrator CLI Skill</h1>
   <p>Run Claude Code agent teams from Windows PowerShell with reproducible prompts, debug logs, and teammate-by-teammate reporting.</p>
 
