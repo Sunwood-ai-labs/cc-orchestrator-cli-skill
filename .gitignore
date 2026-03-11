@@ -1,0 +1,17 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+
+# Temp outputs and logs
+tmp/
+*.log
+
+# Node and docs build outputs
+node_modules/
+dist/
+.vitepress/cache/
+.vitepress/dist/
+
+# Coverage and reports
+coverage/
+

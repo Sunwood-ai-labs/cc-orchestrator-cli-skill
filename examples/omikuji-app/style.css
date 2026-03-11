@@ -1,0 +1,488 @@
+/* ================================================
+   Omikuji (Japanese Fortune) App Styles
+   ================================================ */
+
+/* CSS Custom Properties */
+:root {
+  /* Japanese-inspired color palette */
+  --color-bg: #fff8f0;
+  --color-surface: #ffffff;
+  --color-primary: #c41e3a;
+  --color-primary-dark: #8b1426;
+  --color-gold: #d4a539;
+  --color-gold-light: #f0d78c;
+  --color-text: #2d2d2d;
+  --color-text-muted: #6b6b6b;
+  --color-border: #e0d5c7;
+
+  /* Fortune rank colors */
+  --rank-daikichi: #c41e3a;
+  --rank-kichi: #e85a71;
+  --rank-shokichi: #d4a539;
+  --rank-suekichi: #8b7355;
+  --rank-kyo: #6b8e23;
+
+  /* Spacing & sizing */
+  --shadow-soft: 0 4px 20px rgba(196, 30, 58, 0.15);
+  --shadow-paper: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --transition: 0.3s ease;
+  --font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-family);
+  background: linear-gradient(180deg, var(--color-bg) 0%, #fff0e6 100%);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  line-height: 1.7;
+}
+
+/* Main Container */
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 2px solid var(--color-border);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ================================================
+   Header
+   ================================================ */
+header {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-gold) 0px,
+    var(--color-gold) 20px,
+    transparent 20px,
+    transparent 40px
+  );
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--color-gold-light);
+  opacity: 0.9;
+}
+
+/* ================================================
+   Fortune Display (The Omikuji Paper)
+   ================================================ */
+.fortune-section {
+  padding: 2rem 1.5rem 1rem;
+}
+
+.fortune-display {
+  background: linear-gradient(180deg, #fffaf5 0%, #fff5eb 100%);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow-paper);
+  transition: all var(--transition);
+  position: relative;
+  padding: 2rem 1.5rem;
+}
+
+/* Empty state */
+.app-container.state-empty .fortune-display {
+  border-style: dashed;
+  background: repeating-linear-gradient(
+    45deg,
+    #fffaf5,
+    #fffaf5 10px,
+    #fff5eb 10px,
+    #fff5eb 20px
+  );
+}
+
+.app-container.state-empty .placeholder {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+}
+
+/* Active state - fortune revealed */
+.app-container.state-active .fortune-display {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(212, 165, 57, 0.3), var(--shadow-paper);
+}
+
+.app-container.state-active .placeholder {
+  display: none;
+}
+
+/* Fortune content elements */
+.fortune-rank {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--rank-daikichi);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+  animation: fortuneReveal 0.6s ease;
+}
+
+.fortune-message {
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  animation: fortuneReveal 0.6s ease 0.1s both;
+}
+
+.fortune-details {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  border-top: 1px dashed var(--color-border);
+  padding-top: 1rem;
+  width: 100%;
+  animation: fortuneReveal 0.6s ease 0.2s both;
+}
+
+.fortune-detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+}
+
+.fortune-detail-label {
+  color: var(--color-text-muted);
+}
+
+.fortune-detail-value {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+@keyframes fortuneReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rank-specific colors */
+.fortune-display[data-rank="daikichi"] .fortune-rank { color: var(--rank-daikichi); }
+.fortune-display[data-rank="kichi"] .fortune-rank { color: var(--rank-kichi); }
+.fortune-display[data-rank="shokichi"] .fortune-rank { color: var(--rank-shokichi); }
+.fortune-display[data-rank="suekichi"] .fortune-rank { color: var(--rank-suekichi); }
+.fortune-display[data-rank="kyo"] .fortune-rank { color: var(--rank-kyo); }
+
+/* ================================================
+   Controls
+   ================================================ */
+.controls {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1rem;
+}
+
+.btn {
+  flex: 1;
+  padding: 1rem 1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Primary Button (Draw Fortune) */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.btn-primary:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(196, 30, 58, 0.4);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Secondary Button (Reset) */
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 2px solid var(--color-border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(196, 30, 58, 0.05);
+}
+
+.btn-secondary:active:not(:disabled) {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* ================================================
+   History Section
+   ================================================ */
+.history-section {
+  padding: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  background: #faf8f5;
+}
+
+.history-section h2 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-align: center;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.history-container {
+  min-height: 60px;
+}
+
+.history-empty {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.history-list {
+  max-height: 160px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Scrollbar styling */
+.history-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.history-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: white;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-border);
+  transition: all var(--transition);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.history-item:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.history-item:first-child {
+  border-left-color: var(--color-gold);
+  background: linear-gradient(90deg, #fffbf5 0%, white 100%);
+}
+
+.history-time {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.history-rank {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* History rank colors */
+.history-item[data-rank="daikichi"] .history-rank { color: var(--rank-daikichi); }
+.history-item[data-rank="kichi"] .history-rank { color: var(--rank-kichi); }
+.history-item[data-rank="shokichi"] .history-rank { color: var(--rank-shokichi); }
+.history-item[data-rank="suekichi"] .history-rank { color: var(--rank-suekichi); }
+.history-item[data-rank="kyo"] .history-rank { color: var(--rank-kyo); }
+
+/* ================================================
+   Footer
+   ================================================ */
+footer {
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  background: #faf8f5;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ================================================
+   Responsive Design
+   ================================================ */
+@media (min-width: 480px) {
+  .app-container {
+    max-width: 460px;
+  }
+
+  header h1 {
+    font-size: 2.25rem;
+  }
+
+  .fortune-rank {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 640px) {
+  body {
+    padding: 2rem;
+  }
+
+  .app-container {
+    max-width: 500px;
+  }
+}
+
+/* ================================================
+   Accessibility & Preferences
+   ================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .app-container {
+    border-width: 3px;
+  }
+
+  .btn-primary {
+    border: 2px solid var(--color-primary-dark);
+  }
+
+  .fortune-display {
+    border-width: 2px;
+  }
+}
+
+/* Touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover {
+    transform: none;
+  }
+
+  .btn:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .history-item:hover {
+    box-shadow: none;
+  }
+}

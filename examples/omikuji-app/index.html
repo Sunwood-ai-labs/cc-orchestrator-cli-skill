@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おみくじ | Omikuji</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container state-empty">
+        <header>
+            <h1>おみくじ</h1>
+            <p class="subtitle">今日の運勢を占います</p>
+        </header>
+
+        <main>
+            <section class="fortune-section" aria-label="おみくじ結果">
+                <div class="fortune-display" aria-live="polite">
+                    <p class="placeholder">おみくじを引いてください</p>
+                </div>
+            </section>
+
+            <section class="controls" aria-label="操作">
+                <button id="draw-btn" class="btn btn-primary">おみくじを引く</button>
+                <button id="reset-btn" class="btn btn-secondary">リセット</button>
+            </section>
+
+            <section class="history-section" aria-label="履歴">
+                <h2>引いた履歴</h2>
+                <div class="history-container">
+                    <p class="history-empty">まだ引いていません</p>
+                    <div class="history-list" hidden></div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 おみくじアプリ</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+interface:
+  display_name: "CC Orchestrator CLI Skill"
+  short_description: "Run Claude Code agent teams from CLI with prompts, logs, and teammate reporting."
+  default_prompt: "Use $cc-orchestrator-cli-skill to run Claude Code in agent-team mode from the CLI and produce a teammate-reporting task prompt."
+
+policy:
+  allow_implicit_invocation: true
