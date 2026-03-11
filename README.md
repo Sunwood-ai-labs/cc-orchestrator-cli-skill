@@ -50,6 +50,12 @@ Create an agent team in this workspace and build a small static browser app.
 
 The script prints a `DEBUG_PATH=...` line. Check that log for teammate activity such as `spawnInProcessTeammate`, `coder@`, `designer@`, and `reviewer@`.
 
+Prompting tip:
+
+- write detailed instructions instead of short vague requests
+- for meaningful tasks, ask Claude Code to create a QA inventory before making changes
+- require the final response to map back to that QA inventory
+
 ## 🧭 Repository Layout
 
 ```text

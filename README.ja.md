@@ -50,6 +50,12 @@ Create an agent team in this workspace and build a small static browser app.
 
 実行後は `DEBUG_PATH=...` が出るので、そのログに `spawnInProcessTeammate`、`coder@`、`designer@`、`reviewer@` があるか確認します。
 
+プロンプトのコツ:
+
+- 短く曖昧に頼むより、要件・担当・完了条件まで詳しく書く
+- ある程度大きい作業では、変更前に QA inventory を作らせる
+- 最終報告はその QA inventory に対応づけて返させる
+
 ## 🧭 リポジトリ構成
 
 ```text

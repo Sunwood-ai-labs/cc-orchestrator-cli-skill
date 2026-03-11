@@ -7,6 +7,12 @@ Use this when Claude Code should create and run a product-building team.
 ```text
 Create an agent team in this workspace and build a small static browser app.
 
+Before making changes, create a short QA inventory that lists:
+- the requested deliverables
+- the files you expect to create or change
+- the final claims you expect to make
+- the checks required before signoff
+
 Team instructions:
 - Spawn exactly 3 teammates yourself.
 - Roles must be coder, designer, and reviewer.
@@ -28,6 +34,7 @@ Final response requirements:
 - Report what tasks each teammate actually performed, in concrete terms.
 - List the files created or changed.
 - Mention any issues found by the reviewer and how they were resolved.
+- Confirm that the final signoff covered the QA inventory.
 ```
 
 ## Review-Only Team Prompt
@@ -36,6 +43,11 @@ Use this when the code already exists and Claude Code should run a review-orient
 
 ```text
 Create an agent team in this workspace and review the current implementation.
+
+Before reviewing, create a short QA inventory that lists:
+- the target files or surfaces under review
+- the claims you expect to make in the review summary
+- the checks needed to support those claims
 
 Team instructions:
 - Spawn exactly 3 teammates yourself: coder, designer, reviewer.
@@ -51,6 +63,7 @@ Final response requirements:
 - List findings first, ordered by severity.
 - Then report what each teammate actually did.
 - Then list the files changed, if any.
+- Mention whether the QA inventory was fully covered.
 ```
 
 ## Debug Log Checks
