@@ -33,6 +33,22 @@
 2. [SKILL.md](./SKILL.md) の運用ルールを確認します。
 3. PowerShell helper で prompt を渡して実行します。
 
+Provider routing:
+
+- `-Provider Auto` は `ALIBABA_API_KEY` を優先し、なければ `ZAI_API_KEY` を見て、どちらもなければ現在の Claude provider 設定をそのまま使います
+- `-Provider AlibabaCloud` は次の値を設定して起動します
+  - `ANTHROPIC_AUTH_TOKEN=<ALIBABA_API_KEY>`
+  - `ANTHROPIC_BASE_URL=https://coding-intl.dashscope.aliyuncs.com/apps/anthropic`
+  - `ANTHROPIC_MODEL=qwen3.5-plus`
+- `-Provider Zai` は次の値を設定して起動します
+  - `ANTHROPIC_AUTH_TOKEN=<ZAI_API_KEY>`
+  - `ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic`
+  - `API_TIMEOUT_MS=3000000`
+  - `ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-4.5-air`
+  - `ANTHROPIC_DEFAULT_SONNET_MODEL=glm-4.7`
+  - `ANTHROPIC_DEFAULT_OPUS_MODEL=glm-4.7`
+- 互換性維持のため `-UseAlibabaCloud` は残してあり、同様のショートカットとして `-UseZai` も使えます
+
 Windows 前提:
 
 - helper script は Windows PowerShell 向けです

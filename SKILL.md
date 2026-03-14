@@ -14,9 +14,10 @@ Use this skill to drive Claude Code from the command line on Windows when the go
 3. Ask Claude Code to build a QA inventory first when the task is substantial, user-facing, or review-sensitive.
 4. Pipe the prompt over stdin instead of passing a long multiline prompt as a positional argument.
 5. Set `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.
-6. Use `--dangerously-skip-permissions` only when the task needs hands-off file edits or unrestricted tool usage and the user expects that behavior.
-7. Capture a debug log and confirm teammate spawn from the log before claiming team mode worked.
-8. Read generated text files with UTF-8 in PowerShell when Japanese or other non-ASCII text is involved.
+6. Choose the provider explicitly when needed. This helper supports `-Provider AlibabaCloud` and `-Provider Zai`, while `-Provider Auto` prefers `ALIBABA_API_KEY` first and then `ZAI_API_KEY`.
+7. Use `--dangerously-skip-permissions` only when the task needs hands-off file edits or unrestricted tool usage and the user expects that behavior.
+8. Capture a debug log and confirm teammate spawn from the log before claiming team mode worked.
+9. Read generated text files with UTF-8 in PowerShell when Japanese or other non-ASCII text is involved.
 
 ## Do not mix up team mode and subagents
 
@@ -86,6 +87,21 @@ Example:
 ```powershell
 .\scripts\run-claude-team.ps1 -PromptFile .\tmp\prompt.txt -Dangerous
 ```
+
+Provider defaults:
+
+- `-Provider Auto` prefers `ALIBABA_API_KEY`, then `ZAI_API_KEY`, and falls back to no provider override
+- Alibaba Cloud:
+  - `ALIBABA_API_KEY` maps to `ANTHROPIC_AUTH_TOKEN`
+  - `ANTHROPIC_BASE_URL` defaults to `https://coding-intl.dashscope.aliyuncs.com/apps/anthropic`
+  - `ANTHROPIC_MODEL` defaults to `qwen3.5-plus`
+  - use `-Provider AlibabaCloud`, `-UseAlibabaCloud`, `-AlibabaApiKey`, `-AlibabaBaseUrl`, or `-AlibabaModel`
+- Z.ai:
+  - `ZAI_API_KEY` maps to `ANTHROPIC_AUTH_TOKEN`
+  - `ANTHROPIC_BASE_URL` defaults to `https://api.z.ai/api/anthropic`
+  - `API_TIMEOUT_MS` defaults to `3000000`
+  - model mappings default to `glm-4.5-air` for haiku and `glm-4.7` for sonnet and opus
+  - use `-Provider Zai`, `-UseZai`, `-ZaiApiKey`, `-ZaiBaseUrl`, `-ZaiApiTimeoutMs`, `-ZaiHaikuModel`, `-ZaiSonnetModel`, or `-ZaiOpusModel`
 
 ## Verify that team mode actually ran
 

@@ -33,6 +33,22 @@ It is designed for the workflow we validated in this repo:
 2. Read [SKILL.md](./SKILL.md) for the working rules.
 3. Use the helper script with a prompt file or inline prompt text.
 
+Provider routing:
+
+- `-Provider Auto` prefers `ALIBABA_API_KEY`, then `ZAI_API_KEY`, and otherwise leaves the active Claude provider unchanged
+- `-Provider AlibabaCloud` launches Claude Code with:
+  - `ANTHROPIC_AUTH_TOKEN=<ALIBABA_API_KEY>`
+  - `ANTHROPIC_BASE_URL=https://coding-intl.dashscope.aliyuncs.com/apps/anthropic`
+  - `ANTHROPIC_MODEL=qwen3.5-plus`
+- `-Provider Zai` launches Claude Code with:
+  - `ANTHROPIC_AUTH_TOKEN=<ZAI_API_KEY>`
+  - `ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic`
+  - `API_TIMEOUT_MS=3000000`
+  - `ANTHROPIC_DEFAULT_HAIKU_MODEL=glm-4.5-air`
+  - `ANTHROPIC_DEFAULT_SONNET_MODEL=glm-4.7`
+  - `ANTHROPIC_DEFAULT_OPUS_MODEL=glm-4.7`
+- legacy `-UseAlibabaCloud` remains available, and `-UseZai` is provided as a matching shortcut
+
 Windows-only assumption:
 
 - the helper scripts in this repo target Windows PowerShell
