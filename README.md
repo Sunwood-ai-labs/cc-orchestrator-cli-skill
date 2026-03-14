@@ -72,6 +72,22 @@ Prompting tip:
 - for meaningful tasks, ask Claude Code to create a QA inventory before making changes
 - require the final response to map back to that QA inventory
 
+## Shared Claude Config
+
+This repository keeps the workspace-level Claude instructions in [shion/CLAUDE.md](./shion/CLAUDE.md).
+
+To reuse the same instruction source from the local Claude home directory on Windows, point `C:\Users\Aslan\.claude\CLAUDE.md` at that file with a symbolic link:
+
+```powershell
+cmd /c mklink C:\Users\Aslan\.claude\CLAUDE.md D:\Prj\cc-orchestrator\shion\CLAUDE.md
+```
+
+Notes:
+
+- `shion/CLAUDE.md` is the source of truth
+- `C:\Users\Aslan\.claude\CLAUDE.md` should stay as a file symlink to that source
+- Windows junctions are for directories, so a file-level symbolic link is the correct mechanism here
+
 ## 🧭 Repository Layout
 
 ```text
@@ -80,6 +96,8 @@ Prompting tip:
 |-- README.md
 |-- README.ja.md
 |-- LICENSE
+|-- shion/
+|   `-- CLAUDE.md
 |-- agents/
 |   `-- openai.yaml
 |-- assets/
@@ -100,6 +118,7 @@ Prompting tip:
 ## 🛠️ Included Files
 
 - [SKILL.md](./SKILL.md): the root skill definition and workflow guidance
+- [shion/CLAUDE.md](./shion/CLAUDE.md): the shared Claude instruction file that is also linked from `C:\Users\Aslan\.claude\CLAUDE.md`
 - [agents/openai.yaml](./agents/openai.yaml): UI-facing skill metadata
 - [references/prompt-patterns.md](./references/prompt-patterns.md): reusable prompt templates for build and review team runs
 - [scripts/run-claude-team.ps1](./scripts/run-claude-team.ps1): PowerShell helper that enables team mode and stores a debug log

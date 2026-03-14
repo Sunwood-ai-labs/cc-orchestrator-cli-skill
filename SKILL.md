@@ -19,6 +19,24 @@ Use this skill to drive Claude Code from the command line on Windows when the go
 8. Capture a debug log and confirm teammate spawn from the log before claiming team mode worked.
 9. Read generated text files with UTF-8 in PowerShell when Japanese or other non-ASCII text is involved.
 
+## Shared Claude instruction source
+
+This repository keeps the workspace instruction source in [shion/CLAUDE.md](./shion/CLAUDE.md).
+
+On the maintainer machine, `C:\Users\Aslan\.claude\CLAUDE.md` is expected to point to that file through a Windows file symbolic link so both locations stay aligned.
+
+Setup command:
+
+```powershell
+cmd /c mklink C:\Users\Aslan\.claude\CLAUDE.md D:\Prj\cc-orchestrator\shion\CLAUDE.md
+```
+
+Important:
+
+- treat `shion/CLAUDE.md` as the editable source of truth
+- do not replace the shared setup with a copied file unless the user explicitly asks for that
+- use a file symbolic link, not a junction, because Windows junctions apply to directories
+
 ## Do not mix up team mode and subagents
 
 - Use true team mode when Claude Code should spawn teammates itself.

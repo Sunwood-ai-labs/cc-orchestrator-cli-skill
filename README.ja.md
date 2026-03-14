@@ -72,6 +72,22 @@ Create an agent team in this workspace and build a small static browser app.
 - ある程度大きい作業では、変更前に QA inventory を作らせる
 - 最終報告はその QA inventory に対応づけて返させる
 
+## 🔗 共有する Claude 設定
+
+このリポジトリでは、Claude 向けの共通指示を [shion/CLAUDE.md](./shion/CLAUDE.md) に置きます。
+
+Windows では、このファイルをローカルの Claude 設定からも使えるように、`C:\Users\Aslan\.claude\CLAUDE.md` を次のようにシンボリックリンクにします。
+
+```powershell
+cmd /c mklink C:\Users\Aslan\.claude\CLAUDE.md D:\Prj\cc-orchestrator\shion\CLAUDE.md
+```
+
+運用メモ:
+
+- 本体は `shion/CLAUDE.md` です
+- `C:\Users\Aslan\.claude\CLAUDE.md` はそのファイルを指すリンクとして維持します
+- Windows のジャンクションはディレクトリ用なので、ファイル共有にはシンボリックリンクを使います
+
 ## 🧭 リポジトリ構成
 
 ```text
@@ -80,6 +96,8 @@ Create an agent team in this workspace and build a small static browser app.
 |-- README.md
 |-- README.ja.md
 |-- LICENSE
+|-- shion/
+|   `-- CLAUDE.md
 |-- agents/
 |   `-- openai.yaml
 |-- assets/
@@ -100,6 +118,7 @@ Create an agent team in this workspace and build a small static browser app.
 ## 🛠️ 含まれているもの
 
 - [SKILL.md](./SKILL.md): スキル本体と実行ルール
+- [shion/CLAUDE.md](./shion/CLAUDE.md): `C:\Users\Aslan\.claude\CLAUDE.md` からも共有して使う Claude 指示ファイル
 - [agents/openai.yaml](./agents/openai.yaml): UI 向けメタデータ
 - [references/prompt-patterns.md](./references/prompt-patterns.md): build 用・review 用の prompt テンプレ
 - [scripts/run-claude-team.ps1](./scripts/run-claude-team.ps1): team mode を有効にして debug log も残す helper
